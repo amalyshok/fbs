@@ -419,7 +419,7 @@ xsigin/signup popup
   appearance: none;
 }
 .no-touch .cd-form input[type=submit]:hover, .no-touch .cd-form input[type=submit]:focus {
-  background: #3599ae;
+  background: #EF5A42;
   outline: none;
 }
 .cd-form .hide-password {
