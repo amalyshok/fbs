@@ -41,10 +41,10 @@ $(function() {
 	$('.mongo').click(startMongo);
 	$('.loadlogo').hide();
 	$('.start1').click(() => { if (logo === 0) {parserGo(); logo++} });
-	//$('.start2').click(() => getMatches(+$(".valuer")[0].value));
-	$('.start2').click(getMatches1);
+	$('.start2').click(() => getMatches(+$(".valuer")[0].value));
+	//$('.start2').click(getMatches1);
 	//$('.valuer').click(changeText);
-		$('.widget1').click( (e) => {
+		$('.widget1').click( () => {
 			if ($('.widget-category-list').is(':visible') && logo !== 0) {
 			$('.widget-category-list').slideUp(400, () => {$('.widget1').html('Доступные лиги ↓')}); }
 						 else if (logo !== 0) {

@@ -47,14 +47,27 @@ jQuery(document).ready(function($){
 	});
 
 	//скрыть или показать пароль
-	$('.hide-password').on('click', function(){
-		var $this= $(this),
-			$password_field = $this.prev('input');
-		
-		( 'password' == $password_field.attr('type') ) ? $password_field.attr('type', 'text') : $password_field.attr('type', 'password');
-		( 'Скрыть' == $this.text() ) ? $this.text('Показать') : $this.text('Скрыть');
-		//фокус и перемещение курсора в конец поля ввода
-		$password_field.putCursorAtEnd();
+	$('.hide-password').on('click', function () {
+		let $this= $(this),
+			element = $this.prev('input')[0];
+		if (element.type == 'password') {
+		var inp = document.createElement("input");
+		inp.id = element.id;
+		inp.className = element.className;
+		inp.type = "text";
+		inp.value = element.value;
+		element.parentNode.replaceChild(inp, element);
+		this.innerText = 'Скрыть';
+		}
+		else {
+		let inp = document.createElement("input");
+		inp.id = element.id;
+		inp.className = element.className;
+		inp.type = "password";
+		inp.value = element.value;
+		element.parentNode.replaceChild(inp, element);
+		this.innerText = 'Показать';
+		}
 	});
 
 	//показать форму востановления пароля 
@@ -91,14 +104,14 @@ jQuery(document).ready(function($){
 		$form_forgot_password.addClass('is-selected');
 	}
 
-	//при желании можно отключить - это просто, сообщения об ошибках при заполнении
+	//обработка отправки формы. закомментил обработку ошибок
 	$form_login.find('input[type="submit"]').on('click', function(event){
-		event.preventDefault();
-		$form_login.find('input[type="email"]').toggleClass('has-error').next('span').toggleClass('is-visible');
+		//event.preventDefault();
+		//$form_login.find('input[type="email"]').toggleClass('has-error').next('span').toggleClass('is-visible');
 	});
 	$form_signup.find('input[type="submit"]').on('click', function(event){
-		event.preventDefault();
-		$form_signup.find('input[type="email"]').toggleClass('has-error').next('span').toggleClass('is-visible');
+		//event.preventDefault();
+		//$form_signup.find('input[type="email"]').toggleClass('has-error').next('span').toggleClass('is-visible');
 	});
 
 

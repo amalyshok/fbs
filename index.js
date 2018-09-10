@@ -5,20 +5,25 @@ let app = express();
 let http = require('http').Server(app);
 require('./static/socket/serverSocket')(http);
 app.set('view engine', 'ejs');
-
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-
+let user = { name : 'Anonimus'};
 //тестовый обработчик json post запроса (работает ыыыы =)
-app.use('/test', function(req, res, next) {
-	console.log(req.body);
+app.use('/login', function(req, res, next) {
+	res.render('login', {body: req.body});
+	next();
+});
+
+app.use('/signup', function(req, res, next) {
+	user = req.body;
+	res.redirect('/template');
 	next();
 });
 
 // рендерим шаблон основной страницы сайта, с обращением по имени. 
 app.use('/template', function (req, res, next) {
-	res.render( 'index', {name: 'Александр'} );
+	res.render( 'index', {name: user.login} );
 	next();
 });
 

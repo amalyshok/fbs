@@ -26,7 +26,6 @@
 		<li>-</li>
 	  </ul>
 	  </div>
-      </form>
       <ul id="menu">
    <!--     <li><a href="http://localhost:3000">Тестовая страница</a></li>
         <li><a href="">Копия сайта</a></li> -->
@@ -48,16 +47,16 @@
 	    <li><a href="#0">Регистрация</a></li>
 	</ul>
 	<div id="cd-login"> <!-- форма входа -->
-	    <form class="cd-form">
+	    <form id='form-login' class="cd-form" method="POST" action="/login">
 		<p class="fieldset">
 		    <label class="image-replace cd-email" for="signin-email">E-mail</label>
-		    <input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail">
+		    <input class="full-width has-padding has-border" id="signin-email" name='email' type="email" placeholder="E-mail">
 		    <span class="cd-error-message">Здесь сообщение об ошибке!</span>
 		</p>
 		<p class="fieldset">
 		    <label class="image-replace cd-password" for="signin-password">Пароль</label>
-		    <input class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Пароль">
-		    <a href="#0" class="hide-password">Скрыть</a>
+		    <input class="full-width has-padding has-border" id="signin-password" name='password' type="password"  placeholder="Пароль">
+				<a href="#0" class="hide-password">Показать</a>
 		    <span class="cd-error-message">Здесь сообщение об ошибке!</span>
 		</p>
 		<p class="fieldset">
@@ -72,21 +71,21 @@
 	    <a href="#0" class="cd-close-form">Close</a> 
 	</div> <!-- конец блока с формой входа -->
 	<div id="cd-signup"> <!-- блок с формой регистрации -->
-	   <form class="cd-form">
+	   <form id='form-signup' class="cd-form" method="POST" action="/signup">
 	      <p class="fieldset">
 		 <label class="image-replace cd-username" for="signup-username">Имя пользователя</label>
-		 <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Имя пользователя">
+		 <input class="full-width has-padding has-border" id="signup-username" name='login' type="text" placeholder="Имя пользователя">
 		 <span class="cd-error-message">Здесь сообщение об ошибке!</span>
 	      </p>
 	      <p class="fieldset">
 		  <label class="image-replace cd-email" for="signup-email">E-mail</label>
-		  <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="E-mail">
+		  <input class="full-width has-padding has-border" id="signup-email" name='email' type="email" placeholder="E-mail">
 		  <span class="cd-error-message">Здесь сообщение об ошибке!</span>
 	       </p>
 	       <p class="fieldset">
 	           <label class="image-replace cd-password" for="signup-password">Пароль</label>
-		   <input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="Пароль">
-		   <a href="#0" class="hide-password">Скрыть</a>
+		   <input class="full-width has-padding has-border" id="signup-password" name='password' type="password"  placeholder="Пароль">
+		   <a href="#0" class="hide-password">Показать</a>
 		   <span class="cd-error-message">Здесь сообщение об ошибке!</span>
 	        </p>
 	        <p class="fieldset">
@@ -124,7 +123,7 @@
       <div class="post-image"><a href="#"><img src="./img/football.jpg"></a></div>
       <div class="post-content">
         <div class="category"></div>
-        <h2 class="post-title">Привет <%= name %>! Начни свой первый анализ прямо сейчас</h2>
+        <h2 class="post-title">Привет, <%= name %>! Начни свой первый анализ прямо сейчас</h2>
         <p>Нажми кнопку "ЗАПУСК" и загрузи доступные для анализа лиги. Можешь выбрать одну или несколько, после чего тебе станут доступны предстоящие матчи для анализа. </p>
         <div class="post-footer">
           <a class="more-link start2" href="#">Предстоящие матчи на ближайший:</a>
