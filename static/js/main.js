@@ -53,6 +53,7 @@ jQuery(document).ready(function($){
 		if (element.type == 'password') {
 		var inp = document.createElement("input");
 		inp.id = element.id;
+		inp.name = element.name;
 		inp.className = element.className;
 		inp.type = "text";
 		inp.value = element.value;
@@ -62,6 +63,7 @@ jQuery(document).ready(function($){
 		else {
 		let inp = document.createElement("input");
 		inp.id = element.id;
+		inp.name = element.name;
 		inp.className = element.className;
 		inp.type = "password";
 		inp.value = element.value;

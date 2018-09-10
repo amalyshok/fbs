@@ -5,6 +5,7 @@ io.on('connection', (socket) => {
 	socket.on('Hi', (data) => {console.log(data)});
 	socket.on('disconnect', () => console.log('клиент закончил сессию сокет \n'));
 	socket.on('string', text => {
+		if (typeof text === 'object') { text = JSON.stringify(text)};
 		console.log('С сайта отправлен текст: "' + text + '"');
 		socket.emit('Hi', `Сервер получил текст :"${text}"`);
 	}
