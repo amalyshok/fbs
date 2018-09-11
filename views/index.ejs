@@ -1,184 +1,193 @@
 <html>
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-<title>testFootballData</title>
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700,700italic|Playfair+Display:400,700&subset=latin,cyrillic">
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css">
-<link rel="stylesheet" href="css/main.css"/>
-<link rel="stylesheet" href="css/style.css"/>
-<script type="text/javascript" src="./js/jquery-1.7.2.min.js"></script>
-<script src="/socket.io/socket.io.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>testFootballData</title>
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700,700italic|Playfair+Display:400,700&subset=latin,cyrillic">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css">
+	<link rel="stylesheet" href="css/main.css" />
+	<link rel="stylesheet" href="css/style.css" />
+	<script type="text/javascript" src="./js/jquery-1.7.2.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
 </head>
 
 <header>
-    <nav class="container">
-      <a class="logo start1" href="#">
-        <span>L</span>
-        <span>O</span>
-        <span>G</span>
-        <span>O</span>
-      </a>
-      <div class="nav-toggle">
-	  <ul class='ul-menu'>
-		<li>-</li>
-		<li>-</li>
-		<li>-</li>
-	  </ul>
-	  </div>
-      <ul id="menu">
-   <!--     <li><a href="http://localhost:3000">Тестовая страница</a></li>
+	<nav class=" container">
+		<a class="logo start1" href="#">
+			<span>L</span>
+			<span>O</span>
+			<span>G</span>
+			<span>O</span>
+		</a>
+		<div class="nav-toggle">
+			<ul class='ul-menu'>
+				<li>-</li>
+				<li>-</li>
+				<li>-</li>
+			</ul>
+		</div>
+		<ul id="menu">
+			<!--     <li><a href="http://localhost:3000">Тестовая страница</a></li>
         <li><a href="">Копия сайта</a></li> -->
-		<nav class="main-nav">
+			<nav class="main-nav">
 				<!-- ссылки на вызов форм -->
 				<li><a class="cd-signin" href="#0">Вход</a></li>
 				<li><a class="cd-signup" href="#0">Регистрация</a></li>
-		</nav>
-      </ul>
-    </nav>
-  </header>
-  
+			</nav>
+		</ul>
+	</nav>
+</header>
+
 <body class="Site">
 
-	<div class="cd-user-modal"> <!-- все формы на фоне затемнения-->
-    <div class="cd-user-modal-container"> <!-- основной контейнер -->
-	<ul class="cd-switcher">
-	    <li><a href="#0">Вход</a></li>
-	    <li><a href="#0">Регистрация</a></li>
-	</ul>
-	<div id="cd-login"> <!-- форма входа -->
-	    <form id='form-login' class="cd-form" method="POST" action="/login">
-		<p class="fieldset">
-		    <label class="image-replace cd-email" for="signin-email">E-mail</label>
-		    <input class="full-width has-padding has-border" id="signin-email" name='email' type="email" placeholder="E-mail">
-		    <span class="cd-error-message">Здесь сообщение об ошибке!</span>
-		</p>
-		<p class="fieldset">
-		    <label class="image-replace cd-password" for="signin-password">Пароль</label>
-		    <input class="full-width has-padding has-border" id="signin-password" name='password' type="password"  placeholder="Пароль">
-				<a href="#0" class="hide-password">Показать</a>
-		    <span class="cd-error-message">Здесь сообщение об ошибке!</span>
-		</p>
-		<p class="fieldset">
-		    <input type="checkbox" id="remember-me" checked>
-		    <label for="remember-me">Запомнить меня</label>
-		</p>
-		<p class="fieldset">
-		    <input class="full-width" type="submit" value="Войти">
-		</p>
-	    </form>				
-	    <p class="cd-form-bottom-message"><a href="#0">Забыли свой пароль?</a></p>
-	    <a href="#0" class="cd-close-form">Close</a> 
-	</div> <!-- конец блока с формой входа -->
-	<div id="cd-signup"> <!-- блок с формой регистрации -->
-	   <form id='form-signup' class="cd-form" method="POST" action="/signup">
-	      <p class="fieldset">
-		 <label class="image-replace cd-username" for="signup-username">Имя пользователя</label>
-		 <input class="full-width has-padding has-border" id="signup-username" name='login' type="text" placeholder="Имя пользователя">
-		 <span class="cd-error-message">Здесь сообщение об ошибке!</span>
-	      </p>
-	      <p class="fieldset">
-		  <label class="image-replace cd-email" for="signup-email">E-mail</label>
-		  <input class="full-width has-padding has-border" id="signup-email" name='email' type="email" placeholder="E-mail">
-		  <span class="cd-error-message">Здесь сообщение об ошибке!</span>
-	       </p>
-	       <p class="fieldset">
-	           <label class="image-replace cd-password" for="signup-password">Пароль</label>
-		   <input class="full-width has-padding has-border" id="signup-password" name='password' type="password"  placeholder="Пароль">
-		   <a href="#0" class="hide-password">Показать</a>
-		   <span class="cd-error-message">Здесь сообщение об ошибке!</span>
-	        </p>
-	        <p class="fieldset">
-		    <input type="checkbox" id="accept-terms">
-		    <label for="accept-terms">Я согласен с <a href="#0">Условиями</a></label>
-	        </p>
-	        <p class="fieldset">
-		    <input class="full-width has-padding" type="submit" value="Создать аккаунт">
-	        </p>
-	    </form>
-		<a href="#0" class="cd-close-form">Закрыть</a>
-	</div> <!-- cd-signup -->
-	<div id="cd-reset-password"> <!-- форма восстановления пароля -->
-	    <p class="cd-form-message">Забыли пароль? Пожалуйста, введите адрес своей электронной почты. Вы получите ссылку, чтобы создать новый пароль.</p>
-	    <form class="cd-form">
-		<p class="fieldset">
-		    <label class="image-replace cd-email" for="reset-email">E-mail</label>
-		    <input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
-		    <span class="cd-error-message">Здесь сообщение об ошибке!</span>
-		</p>
-		<p class="fieldset">
-		     <input class="full-width has-padding" type="submit" value="Восстановить пароль">
-		</p>
-	     </form>
-                 <p class="cd-form-bottom-message"><a href="#0">Вернуться к входу</a></p>
-	   </div> <!-- cd-reset-password -->
-		<a href="#0" class="cd-close-form">Закрыть</a>
-	</div> <!-- cd-user-modal-container -->
- </div> <!-- cd-user-modal -->
- 
- 
-  <div class="container">
-  <div class="posts-list">
-    <article id="post-1" class="post">
-      <div class="post-image"><a href="#"><img src="./img/football.jpg"></a></div>
-      <div class="post-content">
-        <div class="category"></div>
-        <h2 class="post-title">Привет, <%= login %>! Начни свой первый анализ прямо сейчас</h2>
-        <p>Нажми кнопку "ЗАПУСК" и загрузи доступные для анализа лиги. Можешь выбрать одну или несколько, после чего тебе станут доступны предстоящие матчи для анализа. </p>
-        <div class="post-footer">
-          <a class="more-link start2" href="#">Предстоящие матчи на ближайший:</a>
-		  <input type="number" name="num" min="1" max="5" value="1" class='valuer'> <strong class='strong'>день.</strong>
-		  
-<!--	  <input type='button' class='mongo' value='Подключиться к базе Монго' /> -->
-          <div class="post-social">
-			<img class='loadlogo' src='./img/loading.gif' alt='download...'> 
-          </div>
-        </div>
-      </div>
-    </article>
-  </div> <!-- конец div class="posts-list"-->
-  
-  <aside>
-  <div class="widget">
-    <h3 class="widget-title"><a class='widget1' href='#'>Доступные лиги</a></h3>
-			<ul class="widget-category-list">
+	<div class="cd-user-modal">
+		<!-- все формы на фоне затемнения-->
+		<div class="cd-user-modal-container">
+			<!-- основной контейнер -->
+			<ul class="cd-switcher">
+				<li><a href="#0">Вход</a></li>
+				<li><a href="#0">Регистрация</a></li>
 			</ul>
-  </div>
-  <div class="widget">
-    <h3 class="widget-title"><a class='widget2' href='#'>Предстоящие матчи</a></h3>
-    <ul class="widget-posts-list">
-    </ul>
-  </div>
-  <div class="widget">
-    <h3 class="widget-title">Подписка на рассылку</h3>
-    <form action="" method="post" id="subscribe">
-      <input type="email" name="email" placeholder="Ваш email" required>
-      <button type="submit"><i class="fa fa-paper-plane-o"></i></button>
-    </form>
-  </div>
-</aside>
-</div> <!-- конец div class="container"-->
+			<div id="cd-login">
+				<!-- форма входа -->
+				<form id='form-login' class="cd-form" method="POST" action="/login">
+					<p class="fieldset">
+						<label class="image-replace cd-email" for="signin-email">E-mail</label>
+						<input class="full-width has-padding has-border" id="signin-email" name='email' type="email" placeholder="E-mail">
+						<span class="cd-error-message">Здесь сообщение об ошибке!</span>
+					</p>
+					<p class="fieldset">
+						<label class="image-replace cd-password" for="signin-password">Пароль</label>
+						<input class="full-width has-padding has-border" id="signin-password" name='password' type="password" placeholder="Пароль">
+						<a href="#0" class="hide-password">Показать</a>
+						<span class="cd-error-message">Здесь сообщение об ошибке!</span>
+					</p>
+					<p class="fieldset">
+						<input type="checkbox" id="remember-me" checked>
+						<label for="remember-me">Запомнить меня</label>
+					</p>
+					<p class="fieldset">
+						<input class="full-width" type="submit" value="Войти">
+					</p>
+				</form>
+				<p class="cd-form-bottom-message"><a href="#0">Забыли свой пароль?</a></p>
+				<a href="#0" class="cd-close-form">Close</a>
+			</div> <!-- конец блока с формой входа -->
+			<div id="cd-signup">
+				<!-- блок с формой регистрации -->
+				<form id='form-signup' class="cd-form" method="POST" action="/signup">
+					<p class="fieldset">
+						<label class="image-replace cd-username" for="signup-username">Имя пользователя</label>
+						<input class="full-width has-padding has-border" id="signup-username" name='login' type="text" placeholder="Имя пользователя">
+						<span class="cd-error-message">Здесь сообщение об ошибке!</span>
+					</p>
+					<p class="fieldset">
+						<label class="image-replace cd-email" for="signup-email">E-mail</label>
+						<input class="full-width has-padding has-border" id="signup-email" name='email' type="email" placeholder="E-mail">
+						<span class="cd-error-message">Здесь сообщение об ошибке!</span>
+					</p>
+					<p class="fieldset">
+						<label class="image-replace cd-password" for="signup-password">Пароль</label>
+						<input class="full-width has-padding has-border" id="signup-password" name='password' type="password" placeholder="Пароль">
+						<a href="#0" class="hide-password">Показать</a>
+						<span class="cd-error-message">Здесь сообщение об ошибке!</span>
+					</p>
+					<p class="fieldset">
+						<input type="checkbox" id="accept-terms">
+						<label for="accept-terms">Я согласен с <a href="#0">Условиями</a></label>
+					</p>
+					<p class="fieldset">
+						<input class="full-width has-padding" type="submit" value="Создать аккаунт">
+					</p>
+				</form>
+				<a href="#0" class="cd-close-form">Закрыть</a>
+			</div> <!-- cd-signup -->
+			<div id="cd-reset-password">
+				<!-- форма восстановления пароля -->
+				<p class="cd-form-message">Забыли пароль? Пожалуйста, введите адрес своей электронной почты. Вы получите ссылку,
+					чтобы создать новый пароль.</p>
+				<form class="cd-form">
+					<p class="fieldset">
+						<label class="image-replace cd-email" for="reset-email">E-mail</label>
+						<input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
+						<span class="cd-error-message">Здесь сообщение об ошибке!</span>
+					</p>
+					<p class="fieldset">
+						<input class="full-width has-padding" type="submit" value="Восстановить пароль">
+					</p>
+				</form>
+				<p class="cd-form-bottom-message"><a href="#0">Вернуться к входу</a></p>
+			</div> <!-- cd-reset-password -->
+			<a href="#0" class="cd-close-form">Закрыть</a>
+		</div> <!-- cd-user-modal-container -->
+	</div> <!-- cd-user-modal -->
 
-<footer>
-  <div class="container">
-    <div class="footer-col"><span>Анализ футбольной статистики @ 2018</span></div>
-    <div class="footer-col">
-      <div class="social-bar-wrap">
-        <a title="Facebook" href="" target="_blank"><i class="fa fa-facebook"></i></a>
-        <a title="Twitter" href="" target="_blank"><i class="fa fa-twitter"></i></a>
-        <a title="Pinterest" href="" target="_blank"><i class="fa fa-pinterest"></i></a>
-        <a title="Instagram" href="" target="_blank"><i class="fa fa-instagram"></i></a>
-      </div>
-    </div>
-    <div class="footer-col">
-      <a href="mailto:admin@yoursite.ru">Написать письмо</a>
-    </div>
-  </div>
-</footer>
-<script type="text/javascript" src="./js/modernizr.js"></script>
-<script type="text/javascript" src="./js/main.js"></script>
-<script type="text/javascript" src="./js/test.js"></script>
-<script type="text/javascript" src="./socket/cloneSocket.js"></script>
+
+	<div class="container">
+		<div class="posts-list">
+			<article id="post-1" class="post">
+				<div class="post-image"><a href="#"><img src="./img/football.jpg"></a></div>
+				<div class="post-content">
+					<div class="category"></div>
+					<h2 class="post-title">Привет,
+						<%= login %>! Начни свой первый анализ прямо сейчас</h2>
+					<p>Нажми кнопку "ЗАПУСК" и загрузи доступные для анализа лиги. Можешь выбрать одну или несколько, после чего тебе
+						станут доступны предстоящие матчи для анализа. </p>
+					<div class="post-footer">
+						<a class="more-link start2" href="#">Предстоящие матчи на ближайший:</a>
+						<input type="number" name="num" min="1" max="5" value="1" class='valuer'> <strong class='strong'>день.</strong>
+
+						<!--	  <input type='button' class='mongo' value='Подключиться к базе Монго' /> -->
+						<div class="post-social">
+							<img class='loadlogo' src='./img/loading.gif' alt='download...'>
+						</div>
+					</div>
+				</div>
+			</article>
+		</div> <!-- конец div class="posts-list"-->
+
+		<aside>
+			<div class="widget">
+				<h3 class="widget-title"><a class='widget1' href='#'>Доступные лиги</a></h3>
+				<ul class="widget-category-list">
+				</ul>
+			</div>
+			<div class="widget">
+				<h3 class="widget-title"><a class='widget2' href='#'>Предстоящие матчи</a></h3>
+				<ul class="widget-posts-list">
+				</ul>
+			</div>
+			<div class="widget">
+				<h3 class="widget-title">Подписка на рассылку</h3>
+				<form action="" method="post" id="subscribe">
+					<input type="email" name="email" placeholder="Ваш email" required>
+					<button type="submit"><i class="fa fa-paper-plane-o"></i></button>
+				</form>
+			</div>
+		</aside>
+	</div> <!-- конец div class="container"-->
+
+	<footer>
+		<div class="container">
+			<div class="footer-col"><span>Анализ футбольной статистики @ 2018</span></div>
+			<div class="footer-col">
+				<div class="social-bar-wrap">
+					<a title="Facebook" href="" target="_blank"><i class="fa fa-facebook"></i></a>
+					<a title="Twitter" href="" target="_blank"><i class="fa fa-twitter"></i></a>
+					<a title="Pinterest" href="" target="_blank"><i class="fa fa-pinterest"></i></a>
+					<a title="Instagram" href="" target="_blank"><i class="fa fa-instagram"></i></a>
+				</div>
+			</div>
+			<div class="footer-col">
+				<a href="mailto:admin@yoursite.ru">Написать письмо</a>
+			</div>
+		</div>
+	</footer>
+	<script type="text/javascript" src="./js/modernizr.js"></script>
+	<script type="text/javascript" src="./js/main.js"></script>
+	<script type="text/javascript" src="./js/test.js"></script>
+	<script type="text/javascript" src="./socket/cloneSocket.js"></script>
 </body>
 
 </html>
