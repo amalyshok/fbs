@@ -1,4 +1,9 @@
 // ./index.js
+console.log('запустился ' + __filename);
 const config = require('./config');
-const app = require('./app');
-app.listen(3000, () => console.log('Http started on port: ' + config.PORT));
+const http = require('./app');
+
+console.log('исполнился ' + __filename);
+http.listen(config.PORT, () =>
+  console.log('Http started on port: ' + config.PORT)
+);

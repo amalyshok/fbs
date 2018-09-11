@@ -1,3 +1,4 @@
+console.log('запустился ' + __filename);
 module.exports = function(http) {
   let io = require('socket.io')(http);
   io.on('connection', socket => {
@@ -17,3 +18,5 @@ module.exports = function(http) {
     });
   });
 };
+
+console.log('исполнился ' + __filename);

@@ -1,10 +1,10 @@
+console.log('запустился ' + __filename);
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const http = require('http').Server(app);
-const mongoose = require('./database.js');
 require('./static/socket/serverSocket')(http);
-
+const mongoose = require('./database.js');
 app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -29,4 +29,6 @@ app.use('/template', function(req, res, next) {
 
 app.use(express.static(__dirname + '/static'));
 
-module.exports = app;
+module.exports = http;
+
+console.log('исполнился ' + __filename);

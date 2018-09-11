@@ -4,7 +4,7 @@
   "description": "football stats",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env PORT=3001 nodemon index.js"
+    "start": "cross-env PORT=3000 nodemon index.js"
   },
   "author": "Aleks M",
   "license": "ISC",
