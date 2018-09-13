@@ -6,6 +6,13 @@ mongoose
     config.dbUrl,
     { useNewUrlParser: true }
   )
-  .then(data => {}, err => console.log('Какая-то ошибка подключения \n' + err));
+  .then(
+    data => {
+      console.log(data);
+    },
+    err => {
+      console.log('Какая-то ошибка подключения \n' + err);
+    }
+  );
 
 console.log('исполнился ' + __filename);

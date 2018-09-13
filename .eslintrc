@@ -1,6 +1,6 @@
 {
   "plugins": ["node"],
-  "extends": ["eslint:recommended", "plugin:node/recommended", "prettier"],
+  "extends": ["prettier", "eslint:recommended", "plugin:node/recommended"],
   "rules": {
     "node/exports-style": ["error", "module.exports"],
     "node/prefer-global/buffer": ["error", "always"],
