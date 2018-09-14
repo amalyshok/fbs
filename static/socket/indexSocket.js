@@ -1,4 +1,3 @@
-console.log('запустился ' + __filename);
 let socket = io();
 let input = document.querySelector('#text');
 socket.emit('Hi', 'Привет, сервер, я html и говорю это через сокет');
@@ -21,5 +20,3 @@ if (input) {
     input.value = '';
   };
 }
-
-console.log('исполнился ' + __filename);

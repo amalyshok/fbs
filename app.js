@@ -3,8 +3,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const http = require('http').Server(app);
+const addUser = require('./db/usersScheme').addUser;
+const checkUser = require('./db/usersScheme').checkUser;
 require('./static/socket/serverSocket')(http);
-const mongoose = require('./database.js');
+
 app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -12,11 +14,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 let user = { login: 'Аноним' };
 //обработка логина и регистрации
 app.use('/login', function(req, res, next) {
-  res.render('login', { body: req.body });
+  if (checkUser(req.body.email, req.body.password))
+    res.render('login', { body: req.body });
+  else {
+    console.log(checkUser(req.body.email, req.body.password));
+    res.render('login', { body: 'Неверная почта или пароль' });
+  }
   next();
 });
 app.use('/signup', function(req, res, next) {
   user = req.body;
+  addUser(user.login, user.email, user.password);
   res.redirect('/template');
   next();
 });

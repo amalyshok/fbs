@@ -1,14 +1,16 @@
 console.log('запустился ' + __filename);
-const config = require('./config');
+const config = require('../config');
 let mongoose = require('mongoose');
+mongoose.set('useCreateIndex', true);
 mongoose
   .connect(
-    config.dbUrlLocal,
+    config.dbUrl,
     { useNewUrlParser: true }
   )
   .then(
-    data => {
-      console.log('Подключение к базе данных выполнено!');
+    () => {
+      console.log('Подключение успешно выполнено!');
+      require('./usersScheme');
     },
     err => {
       console.log('Какая-то ошибка подключения \n' + err);
