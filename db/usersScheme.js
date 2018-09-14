@@ -71,7 +71,6 @@ function checkUser(email, password) {
     })
     .exec((err, user) => {
       if (err) console.log('Ошибка при поиске пользователя');
-      console.log(user[0].solt);
       let pass = md5(password + user[0].solt);
       if (pass === user[0].password) return true;
       else return false;
