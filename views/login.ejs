@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Авторицация успешна</title>
-        <script src="/socket.io/socket.io.js"></script>
-    </head>
-    <body>
-      <h1> Поздрдавляю, вы успешно авторизировались </h1>
-      <p><%= JSON.stringify(body) %></p>
-<a href = '/template'> На главную </a>
-    </body>
-	<script src="./socket/indexSocket.js"></script>
-</html> 
+
+<head>
+    <title>Авторицация успешна</title>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <h1>
+        <%= resultLogin %>
+    </h1>
+    <p>
+        <%= JSON.stringify(body) %>
+    </p>
+    <a href='/template'> На главную </a>
+</body>
+<script src="./socket/indexSocket.js"></script>
+
+</html>

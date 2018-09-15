@@ -63,7 +63,7 @@ function addUser(login, email, password) {
   });
 }
 
-function checkUser(email, password) {
+function checkUser(email, password, req, res) {
   let regexp = new RegExp('^' + email + '$', 'i');
   usersModel
     .find({
@@ -72,8 +72,15 @@ function checkUser(email, password) {
     .exec((err, user) => {
       if (err) console.log('Ошибка при поиске пользователя');
       let pass = md5(password + user[0].solt);
-      if (pass === user[0].password) return true;
-      else return false;
+      pass === user[0].password
+        ? res.render('login', {
+            resultLogin: 'Поздравляю, вы успешно авторизовались!',
+            body: user[0]
+          })
+        : res.render('login', {
+            resultLogin: 'email или пароль введены неверно!',
+            body: 'попробуйте еще раз'
+          });
     });
   // каким-то раком нужно из асинхронного userModel.find достать ретурны. и логин заработает
 }

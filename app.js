@@ -13,27 +13,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 let user = { login: 'Аноним' };
 //обработка логина и регистрации
-app.use('/login', function(
-  req,
-  res,
-  next /* {
-  if (checkUser(req.body.email, req.body.password))
-    res.render('login', { body: req.body });
-  else {
-    console.log(checkUser(req.body.email, req.body.password));
-    res.render('login', { body: 'Неверная почта или пароль' });
-  }
-  next();
-});*/
-) {
-  let r;
-  checkUser(req.body.email, req.body.password, next, r);
-  console.log('сработал r = ' + r);
-});
-
-app.use('/login', function(req, res, next) {
-  res.send('хрень');
-  next();
+app.use('/login', function(req, res) {
+  checkUser(req.body.email, req.body.password, req, res);
 });
 
 app.use('/signup', function(req, res, next) {
